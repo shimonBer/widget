@@ -2,8 +2,6 @@ div.container{
   background-color: rgba(175, 184, 190, .2);
   margin: 10%;
   max-width: 1200px;
-
-  
 }
 
 div.widget{
@@ -16,13 +14,14 @@ div.widget{
 
 .header-row{
   padding: 1%;
+  display: flex;
+  align-items: center;
 }
 
 .head-title{
-  
-  display: inline;
   font-size: 1.2em;
   font-family: 'Bree Serif', serif;
+  margin: 1% auto 1% 0;  
 }
 
 
@@ -33,7 +32,6 @@ div.widget{
 
 }
 .item-category{
-  font-style: italic;
   font-family: 'Bree Serif', serif;
 }
 
@@ -43,9 +41,7 @@ div.widget{
 }
 
 .disclosure{
-  display: inline;
-  float: right;
- 
+
 
 }
 
@@ -69,6 +65,9 @@ div.widget{
 }
 
 @media only screen and (max-width: 767px) {
+  .header-row{
+    display: block;
+  }
 
   .widget{
     justify-content: space-around;
@@ -79,7 +78,9 @@ div.widget{
 }
 
 @media only screen and (max-width: 568px) {
-
+  .header-row{
+    display: block;
+  }
   .widget{
     flex-direction: column;
   }

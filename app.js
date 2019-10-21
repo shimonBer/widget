@@ -13,16 +13,24 @@ try {
                 itemDiv.querySelector(".title-link").setAttribute("href", item.url);
                 itemDiv.querySelector(".brand-link").setAttribute("href", item.url);
                 var itemTitle = itemDiv.querySelector(".item-title");
-            
+                var itemBrand = itemDiv.querySelector(".item-brand");
+                var itemCategory = itemDiv.querySelector(".item-category");
+
                 if ('textContent' in itemTitle) { //for  Firefox
                     itemTitle.textContent = item.name;
-                    itemDiv.querySelector(".item-brand").textContent = item.branding;
-                    if(item.categories) { itemDiv.querySelector(".item-category").textContent = item.categories[0]; }
+                    itemBrand.textContent = item.branding;
+                    if(item.categories) { itemCategory.textContent = item.categories.join(","); }
                     
                 } else { // for IE8
                     itemTitle.innerText = item.name;
-                    itemDiv.querySelector(".item-brand").innerText = item.branding;
-                    if(item.categories) {itemDiv.querySelector(".item-category").innerText = item.categories[0]; }
+                    itemBrand.innerText = item.branding;
+                    if(item.categories) { itemCategory.innerText = item.categories.join(","); }
+                }
+                if(containsHebrew(item.name)){
+                    itemTitle.setAttribute("dir", "rtl");
+                }
+                if(containsHebrew(item.branding)){
+                    itemBrand.setAttribute("dir", "rtl");
                 }
             });
         }
@@ -72,3 +80,7 @@ try {
 
   }
 
+function containsHebrew(str){
+    var HebrewChars = new RegExp("[\u0590-\u05FF]");
+    return HebrewChars.test(str);
+}
